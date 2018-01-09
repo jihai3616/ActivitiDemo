@@ -16,22 +16,27 @@
     </endEvent>
     <userTask activiti:assignee="张三" completionQuantity="1" id="usertask1" implementation="##unspecified" isForCompensation="false" name="请假申请" startQuantity="1">
       <extensionElements>
-        <activiti:executionListener class="com.jiahi3616.activiti.listeners.apiDemo.Person" event="start"/>
+        <activiti:executionListener class="com.jihai3616.activiti.listeners.Person" event="start"/>
       </extensionElements>
       <incoming>flow1</incoming>
       <outgoing>flow2</outgoing>
     </userTask>
     <userTask activiti:assignee="李四" completionQuantity="1" id="usertask2" implementation="##unspecified" isForCompensation="false" name="批准（部门经理）" startQuantity="1">
       <extensionElements>
-        <activiti:executionListener class="com.jiahi3616.activiti.listeners.apiDemo.DepartMentManager" event="start"/>
-        <activiti:taskListener class="com.jiahi3616.activiti.listeners.apiDemo.DepartMentManager" event="approve"/>
+        <activiti:executionListener class="com.jihai3616.activiti.listeners.DepartMentManager" event="start"/>
+        <!--
+        <activiti:taskListener class="com.jihai3616.activiti.listeners.DepartMentManager" event="approve"/>
+        -->
       </extensionElements>
       <incoming>flow2</incoming>
       <outgoing>flow3</outgoing>
     </userTask>
     <userTask activiti:assignee="王五" completionQuantity="1" id="usertask3" implementation="##unspecified" isForCompensation="false" name="批准（总经理）" startQuantity="1">
       <extensionElements>
-        <activiti:taskListener class="com.jiahi3616.activiti.listeners.apiDemo.TopManager" event="approve"/>
+        <activiti:executionListener class="com.jihai3616.activiti.listeners.TopManager" event="start"/>
+        <!--
+        <activiti:taskListener class="com.jihai3616.activiti.listeners.TopManager" event="approve"/>
+        -->
       </extensionElements>
       <incoming>flow3</incoming>
       <outgoing>flow4</outgoing>
